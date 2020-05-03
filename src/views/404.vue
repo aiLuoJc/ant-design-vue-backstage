@@ -1,7 +1,5 @@
 <template>
-  <div>
-    basicform 基本表单
-  </div>
+  <div>404页面</div>
 </template>
 
 <script>
