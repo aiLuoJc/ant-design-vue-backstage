@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="">Footer</div>
+    <div class="">Footer Ant Design ©2018 Created by Ant UED</div>
   </div>
 </template>
 

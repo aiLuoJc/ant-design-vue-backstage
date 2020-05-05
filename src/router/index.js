@@ -13,7 +13,7 @@ import antd from "ant-design-vue";
 
 Vue.use(antd);
 Vue.use(VueRouter);
-// Vue.use(Nprogress);
+Vue.use(Nprogress);
 const routes = [
   {
     path: "/user",
@@ -137,12 +137,15 @@ const router = new VueRouter({
   routes
 });
 
-router.beforeEach(() => {
-  // 页面切换添加的加载条
-  Nprogress.start();
-});
+// router.beforeEach((to, from, next) => {
+//   // 页面切换添加的加载条
+//   if (to.path !== from.path) {
+//     Nprogress.start();
+//   }
+//   next();
+// });
 
-router.afterEach(() => {
-  Nprogress.done();
-});
+// router.afterEach(() => {
+//   Nprogress.done();
+// });
 export default router;
