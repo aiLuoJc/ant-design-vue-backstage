@@ -17,6 +17,7 @@ Vue.use(Nprogress);
 const routes = [
   {
     path: "/user",
+    hideInMenu: true, // 在菜单数据递归的时候，不希望个别的信息显示在上面，根据这个字段递归生成要显示的数据
     // component: RenderRouterView,
     // 这个下面不一样是有单独的布局， 然后将router-view 放在 UserLayout 挂载了
     component: () =>
@@ -52,11 +53,14 @@ const routes = [
       {
         path: "/dashboard",
         name: "dashboard",
+        // 添加信息  我们还需要显示对应菜单图标、名称等
+        meta: { icon: "dashboard", title: "仪表盘" },
         component: { render: h => h("router-view") },
         children: [
           {
             path: "/dashboard/analysis",
             name: "analysis",
+            meta: { title: "分析页" },
             component: () =>
               import(
                 /* webpackChunkName: "dashboard" */ "../views/Dashboard/Analysis"
@@ -67,23 +71,27 @@ const routes = [
       {
         path: "/form",
         name: "form",
+        meta: { icon: "form", title: "表单" },
         component: { render: h => h("router-view") },
         children: [
           {
             path: "/form/basic-form",
             name: "basicform",
+            meta: { title: "基础表单" },
             component: () =>
               import(/* webpackChunkName: "form" */ "../views/Forms/BasicForm")
           },
           {
             path: "/form/step-form",
             name: "stepform",
+            hideChildrenInMenu: true, //不希望下面的路由渲染到菜单上，添加这个字段(子路由隐藏后，如果在访问下面的时候依然希望我的菜单能够选中父路由，后期还需要做些配置)
+            meta: { title: "分步表单" },
             component: () =>
               import(/* webpackChunkName: "form" */ "../views/Forms/StepForm"),
             children: [
               {
                 path: "/form/step-form",
-                redirect: "/form/setp-form/info"
+                redirect: "/form/step-form/info"
               },
               {
                 path: "/form/step-form/info",
@@ -119,15 +127,8 @@ const routes = [
   {
     path: "*",
     name: "404",
+    hideInMenu: true,
     component: NotFound
-  },
-  {
-    path: "/about",
-    name: "About",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ "../views/About")
   }
 ];
 
