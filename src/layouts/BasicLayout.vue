@@ -15,6 +15,7 @@
       <a-layout>
         <a-layout-header style="background: #fff; padding: 0">
           <a-icon
+            v-auth="['admin']"
             :type="collapsed ? 'menu-unfold' : 'menu-fold'"
             class="trigger"
             @click="collapsed = !collapsed"
@@ -30,7 +31,9 @@
         </a-layout-footer>
       </a-layout>
     </a-layout>
-    <SettingDrawer />
+    <Authorized :authority="['admin']">
+      <SettingDrawer />
+    </Authorized>
   </div>
 </template>
 
