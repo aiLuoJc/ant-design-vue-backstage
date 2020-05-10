@@ -23,6 +23,7 @@
 
 <script>
 import SubMenu from "@/layouts/SubMenu";
+import { check } from "@/utils/auth";
 export default {
   props: {
     theme: {
@@ -76,7 +77,10 @@ export default {
 
     getMenuData(routes = [], parentKeys = [], selectedKey) {
       const menuData = [];
-      routes.forEach(item => {
+      for (let item of routes) {
+        if (item.meta && item.meta.authority && !check(item.meta.authority)) {
+          break;
+        }
         if (item.name && !item.hideInMenu) {
           this.openKeysMap[item.path] = parentKeys;
           this.selectedKeysMap[item.path] = [selectedKey || item.path];
@@ -105,7 +109,37 @@ export default {
             ...this.getMenuData(item.children, [...parentKeys, item.path])
           );
         }
-      });
+      }
+      // routes.forEach(item => {
+      //   if (item.name && !item.hideInMenu) {
+      //     this.openKeysMap[item.path] = parentKeys;
+      //     this.selectedKeysMap[item.path] = [selectedKey || item.path];
+      //     const newItem = { ...item }; // 先解构一下原数据，对原数据不影响
+      //     delete newItem.children;
+      //     if (item.children && !item.hideChildrenInMenu) {
+      //       newItem.children = this.getMenuData(item.children, [
+      //         ...parentKeys,
+      //         item.path
+      //       ]);
+      //     } else {
+      //       // 主要是给 form表单下面不显示的路由做处理
+      //       this.getMenuData(
+      //         item.children,
+      //         selectedKey ? parentKeys : [...parentKeys, item.path],
+      //         selectedKey || item.path
+      //       );
+      //     }
+      //     menuData.push(newItem);
+      //   } else if (
+      //     !item.hideInMenu &&
+      //     !item.hideChildrenInMenu &&
+      //     item.children
+      //   ) {
+      //     menuData.push(
+      //       ...this.getMenuData(item.children, [...parentKeys, item.path])
+      //     );
+      //   }
+      // });
       return menuData;
     }
 

@@ -1,15 +1,19 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
+import findLast from "lodash/findLast";
 // 引入loading之类的动画
 import Nprogress from "nprogress";
 import "nprogress/nprogress.css";
 // import Home from "../views/Home";
 import NotFound from "../views/404";
+import Forbidden from "../views/403";
 // import RenderRouterView from "../components/RenderRouterView";
 
 // import { Button } from 'ant-design-vue';
 import "ant-design-vue/dist/antd.less";
 import antd from "ant-design-vue";
+import { check, isLogin } from "../utils/auth";
+// import { TabPane } from "ant-design-vue/types/tabs/tab-pane";
 
 Vue.use(antd);
 Vue.use(VueRouter);
@@ -43,6 +47,7 @@ const routes = [
   },
   {
     path: "/",
+    meta: { authority: ["user", "admin"] },
     component: () =>
       import(/* webpackChunkName: "layout" */ "../layouts/BasicLayout"),
     children: [
@@ -71,7 +76,7 @@ const routes = [
       {
         path: "/form",
         name: "form",
-        meta: { icon: "form", title: "表单" },
+        meta: { icon: "form", title: "表单", authority: ["admin"] },
         component: { render: h => h("router-view") },
         children: [
           {
@@ -123,12 +128,17 @@ const routes = [
       }
     ]
   },
-
   {
     path: "*",
     name: "404",
     hideInMenu: true,
     component: NotFound
+  },
+  {
+    path: "/403",
+    name: "403",
+    hideInMenu: true,
+    component: Forbidden
   }
 ];
 
@@ -138,15 +148,32 @@ const router = new VueRouter({
   routes
 });
 
-// router.beforeEach((to, from, next) => {
-//   // 页面切换添加的加载条
-//   if (to.path !== from.path) {
-//     Nprogress.start();
-//   }
-//   next();
-// });
+router.beforeEach((to, from, next) => {
+  // 页面切换添加的加载条
+  if (to.path !== from.path) {
+    Nprogress.start();
+  }
+  const record = findLast(to.matched, record => record.meta.authority);
+  if (record && !check(record.meta.authority)) {
+    if (!isLogin() && Touch.path !== "/user/login") {
+      next({
+        path: "/user/login"
+      });
+    } else if (to.path !== "/403") {
+      this.$notification.error({
+        message: "403",
+        description: "你没有权限访问，请联系管理员咨询。"
+      });
+      next({
+        path: "/403"
+      });
+    }
+    Nprogress.done();
+  }
+  next();
+});
 
-// router.afterEach(() => {
-//   Nprogress.done();
-// });
+router.afterEach(() => {
+  Nprogress.done();
+});
 export default router;
