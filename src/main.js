@@ -5,8 +5,8 @@ import router from "./router";
 import store from "./store";
 // import {Button, Layout, Icon, Drawer, Radio, Menu} from "ant-design-vue"
 
-import Authorized from "@/components/Authorized";
-import Auth from "@/directives/auth";
+import Authorized from "@/components/Authorized"; // 权限组件模块  在BasicLayout使用了
+import Auth from "@/directives/auth"; // 权限指令js 在BasicLayout使用了 v-auth="['admin']"
 
 Vue.config.productionTip = false;
 
