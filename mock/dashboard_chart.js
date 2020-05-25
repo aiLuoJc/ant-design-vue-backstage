@@ -17,6 +17,6 @@ module.exports = chart; // es6方法的导出功能
 /**
  * 不能用到js中 export default形式了，
  * 因为这个mock文件需要在 node环境下运行， 需要用到 模块化(commonjs)规范
- *
- *
+ * 
+ * 
  */
