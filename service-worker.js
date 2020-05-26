@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "precache-manifest.60c89e474dfb13aff240e5fb724b31b0.js"
+  "/precache-manifest.3809293b4b7b548346ed6773142ce3ff.js"
 );
 
 workbox.core.setCacheNameDetails({prefix: "ant-vue-backstage"});
