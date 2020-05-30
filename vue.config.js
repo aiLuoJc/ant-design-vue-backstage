@@ -14,7 +14,7 @@ module.exports = {
           if (req.headers.accept.indexOf("html") !== -1) {
             console.log("Skipping proxy for browser request.");
             return "/index.html";
-          } else {
+          } else if (process.env.MOCK !== "none") {
             // 接口请求时，可以拿到请求链接，然后
             // 按照规范，将请求地址截断， 然后拼接成我们要访问的js文件
             // req.path   '/api/dashboard/chart'
