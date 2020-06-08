@@ -9,13 +9,9 @@ import NotFound from "../views/404";
 import Forbidden from "../views/403";
 // import RenderRouterView from "../components/RenderRouterView";
 
-// import { Button } from 'ant-design-vue';
-import "ant-design-vue/dist/antd.less";
-import antd from "ant-design-vue";
 import { check, isLogin } from "../utils/auth";
 // import { TabPane } from "ant-design-vue/types/tabs/tab-pane";
 
-Vue.use(antd);
 Vue.use(VueRouter);
 Vue.use(Nprogress);
 const routes = [

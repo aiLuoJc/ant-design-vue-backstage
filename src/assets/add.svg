@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="12px" height="12px" viewBox="0 0 12 12" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.3 (67297) - http://www.bohemiancoding.com/sketch -->
+    <title>icon/add</title>
+    <desc>Created with Sketch.</desc>
+    <g id="fundamental" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="icon/add" transform="translate(-6.000000, -6.000000)">
+            <g id="Group">
+                <rect id="Rectangle-8" fill-rule="nonzero" x="0" y="0" width="24" height="24"></rect>
+                <path d="M7,12 L17,12" id="Line-5" stroke="#CCCCCC" stroke-linecap="square" fill-rule="nonzero"></path>
+                <path d="M12,17 L12,7" id="Line-5" stroke="#CCCCCC" stroke-linecap="square" fill-rule="nonzero"></path>
+            </g>
+        </g>
+    </g>
+</svg>
