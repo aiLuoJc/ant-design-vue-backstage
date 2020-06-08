@@ -17,7 +17,7 @@
           placeholder="请输入付款账号"
         />
       </a-form-item>
-      <!-- <a-form-item
+      <a-form-item
         label="收款账户"
         :label-col="formItemLayout.labelCol"
         :wrapper-col="formItemLayout.wrapperCol"
@@ -43,7 +43,7 @@
             }
           ]"
         />
-      </a-form-item> -->
+      </a-form-item>
       <a-form-item>
         <a-button type="primary" @click="handleSubmit">下一步</a-button>
       </a-form-item>
@@ -52,9 +52,9 @@
 </template>
 
 <script>
-// import ReceiverAccount from "@/components/ReceiverAccount";
+import ReceiverAccount from "@/components/ReceiverAccount";
 export default {
-  // components: { ReceiverAccount },
+  components: { ReceiverAccount },
   data() {
     this.form = this.$form.createForm(this);
     return {
