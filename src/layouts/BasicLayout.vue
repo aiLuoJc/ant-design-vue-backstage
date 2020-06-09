@@ -9,8 +9,10 @@
         collapsible
         width="256px"
       >
-        <div class="logo">Ant design Vue</div>
-        <SiderMenu :theme="navTheme" />
+        <div class="logo">
+          <h1>Ant design Vue</h1>
+        </div>
+        <SiderMenu :theme="navTheme" :collapsed="collapsed" />
       </a-layout-sider>
       <a-layout>
         <a-layout-header style="background: #fff; padding: 0">

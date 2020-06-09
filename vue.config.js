@@ -1,11 +1,36 @@
+// const path = require("path");
+// // const webpack = require("webpack");
+// const AntDesignThemePlugin = require("antd-theme-webpack-plugin");
+// // const { createMockMiddleware } = require("umi-mock-middleware");
+
+// const options = {
+//   antDir: path.join(__dirname, "./node_modules/ant-design-vue"),
+//   stylesDir: path.join(__dirname, "./src"), //将所有的样式文件打包在一起，都会生效主题在线编译
+//   // 所有less变量位置， default.less存放了整个antd组件库的所有less变量
+//   varFile: path.join(
+//     __dirname,
+//     "./node_modules/ant-design-vue/lib/style/themes/default.less"
+//   ),
+//   mainLessFile: "",
+//   themeVariables: ["@primary-color"],
+//   generateOnce: false
+// };
+
+// const themePlugin = new AntDesignThemePlugin(options);
 module.exports = {
   css: {
     loaderOptions: {
       less: {
+        modifyVars: {
+          "primary-color": "#1DA57A"
+        },
         javascriptEnabled: true
       }
     }
   },
+  // configureWebpack: {
+  //   plugins: [themePlugin]
+  // },
   chainWebpack: config => {
     const svgRule = config.module.rule("svg");
 
