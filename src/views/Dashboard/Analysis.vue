@@ -1,5 +1,8 @@
 <template>
   <div>
+    <!-- 可以通过 $t("message")去取到语言包的 key值-->
+    {{ $t("message")["app.dashboard.analysis.timeLabel"] }} :
+    <a-date-picker></a-date-picker>
     <chart :option="chartOption" style="height:400px"></chart>
   </div>
 </template>
