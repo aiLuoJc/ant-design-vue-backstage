@@ -3,7 +3,14 @@
 </template>
 
 <script>
-import echarts from "echarts";
+// 全部引入
+// import echarts from "echarts";
+
+// 按需引入
+import echarts from "echarts/lib/echarts";
+import "echarts/lib/chart/bar";
+import "echarts/lib/component/title";
+
 import { addListener, removeListener } from "resize-detector"; // 通过这个解决DOM加载异步问题
 import debounce from "lodash/debounce"; // 通过这个来进行防抖
 export default {
