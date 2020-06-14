@@ -9,6 +9,8 @@ import store from "./store";
 import enUS from "./locale/enUS";
 import zhCN from "./locale/zhCN";
 import queryString from "query-string"; // 解析url库
+import VueHighlightJS from "vue-highlightjs"; //字符串代码格式化与高亮功能
+import "highlight.js/styles/github.css"; // highlight.js 样式使用
 
 // import { Button } from 'ant-design-vue';
 import "ant-design-vue/dist/antd.less";
@@ -28,6 +30,7 @@ Vue.use(Icon);
 // Vue.use(Menu);
 Vue.use(antd);
 Vue.use(VueI18n);
+Vue.use(VueHighlightJS);
 
 Vue.component("Authorized", Authorized);
 

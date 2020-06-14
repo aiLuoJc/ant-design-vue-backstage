@@ -4,6 +4,8 @@
     {{ $t("message")["app.dashboard.analysis.timeLabel"] }} :
     <a-date-picker></a-date-picker>
     <chart :option="chartOption" style="height:400px"></chart>
+    <!-- {{ChartCode}} -->
+    <pre v-highlightjs="ChartCode"><code class="html"></code></pre>
   </div>
 </template>
 
@@ -11,10 +13,14 @@
 // import axios from "axios";
 import request from "@/utils/request";
 import Chart from "@/components/Chart";
+// 会导出字符串
+import ChartCode from "!!raw-loader!@/components/Chart";
+
 export default {
   data() {
     return {
-      chartOption: {}
+      chartOption: {},
+      ChartCode
       // interval: null
     };
   },
