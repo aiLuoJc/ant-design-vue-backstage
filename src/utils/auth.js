@@ -1,6 +1,9 @@
+const currentAuth = ["admin"];
+export { currentAuth };
+
 // 获取用户的权限
 export function getCurrentAuthority() {
-  return ["admin"];
+  return currentAuth;
 }
 
 // 用来校验 用户的权限是否属于 请求来的数据权限
